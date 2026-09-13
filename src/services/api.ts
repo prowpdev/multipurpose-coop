@@ -1,4 +1,4 @@
-export const DEFAULT_API_BASE = 'http://cooperative-api.test/api';
+export const DEFAULT_API_BASE = '/api';
 
 const getInitialApiBase = () => {
   if (typeof window !== 'undefined') {

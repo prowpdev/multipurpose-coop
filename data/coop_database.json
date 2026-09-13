@@ -58,6 +58,16 @@
       "phone": "+63 (074) 442-9981",
       "manager_name": "Felipe Dizon",
       "active": true
+    },
+    {
+      "id": "branch_test_1789272604677",
+      "cooperative_id": "coop_01",
+      "code": "BAG",
+      "name": "Baguio Highland Branch",
+      "address": "Session Road, Baguio City",
+      "phone": "+63 (074) 442-9981",
+      "manager_name": "Felipe Dizon",
+      "active": true
     }
   ],
   "system_settings": [
@@ -537,7 +547,7 @@
       "code": "4110",
       "name": "Interest Income on Loans",
       "category": "Revenue",
-      "type": "Revenue",
+      "type": "Income",
       "report_group": "Operating Revenue",
       "normal_balance": "Credit",
       "parent_account_id": null,
@@ -554,7 +564,7 @@
       "code": "4120",
       "name": "Service and Processing Fees",
       "category": "Revenue",
-      "type": "Revenue",
+      "type": "Income",
       "report_group": "Operating Revenue",
       "normal_balance": "Credit",
       "parent_account_id": null,
@@ -571,7 +581,7 @@
       "code": "4130",
       "name": "Fines and Penalties on Loans",
       "category": "Revenue",
-      "type": "Revenue",
+      "type": "Income",
       "report_group": "Operating Revenue",
       "normal_balance": "Credit",
       "parent_account_id": null,
@@ -588,7 +598,7 @@
       "code": "4210",
       "name": "Membership Fees Income",
       "category": "Revenue",
-      "type": "Revenue",
+      "type": "Income",
       "report_group": "Operating Revenue",
       "normal_balance": "Credit",
       "parent_account_id": null,
@@ -669,6 +679,23 @@
     },
     {
       "id": "acc_test_1789271957564",
+      "account_code": "1130",
+      "code": "1130",
+      "name": "Short-Term Marketable Securities",
+      "category": "Asset",
+      "type": "Asset",
+      "report_group": "Current Assets",
+      "normal_balance": "Debit",
+      "parent_account_id": "acc_1100",
+      "parent_id": "acc_1100",
+      "is_control": false,
+      "has_subsidiary": false,
+      "is_active": true,
+      "active": true,
+      "description": ""
+    },
+    {
+      "id": "acc_test_1789272604668",
       "account_code": "1130",
       "code": "1130",
       "name": "Short-Term Marketable Securities",
@@ -854,7 +881,7 @@
       "prefix": "JV",
       "pattern": "{BRANCH}-GLV-{YEAR}-{NUMBER}",
       "length": 6,
-      "current_seq": 43
+      "current_seq": 44
     },
     {
       "id": "num_cd",
@@ -906,6 +933,13 @@
     },
     {
       "id": "wf_test_1789271957565",
+      "name": "Emergency Micro-Credit Express Approval",
+      "module": "Loans",
+      "description": "Fast single-tier approval for calamity loans",
+      "active": true
+    },
+    {
+      "id": "wf_test_1789272604670",
       "name": "Emergency Micro-Credit Express Approval",
       "module": "Loans",
       "description": "Fast single-tier approval for calamity loans",
@@ -1013,6 +1047,17 @@
     },
     {
       "id": "cf_test_1789271957566",
+      "entity": "Member",
+      "field_name": "emergency_contact_phone",
+      "field_label": "Emergency Contact Number",
+      "field_type": "Phone",
+      "options": [],
+      "required": true,
+      "default_value": "",
+      "active": true
+    },
+    {
+      "id": "cf_test_1789272604671",
       "entity": "Member",
       "field_name": "emergency_contact_phone",
       "field_label": "Emergency Contact Number",
@@ -1263,7 +1308,7 @@
       "code": "LP-REG",
       "name": "Regular Multi-Purpose Loan",
       "description": "Standard term loan for regular members with 10% annual diminishing balance",
-      "version": 2,
+      "version": 3,
       "min_amount": 10000,
       "max_amount": 300000,
       "annual_interest_rate": 12,
@@ -1346,6 +1391,34 @@
     },
     {
       "id": "lp_test_1789271957560",
+      "code": "LP-EDU-TEST",
+      "name": "Education Assistance Loan",
+      "description": "Dynamic education financing",
+      "version": 1,
+      "min_amount": 5000,
+      "max_amount": 100000,
+      "annual_interest_rate": 7.5,
+      "interest_calculation_method": "Simple Interest",
+      "default_term_months": 10,
+      "payment_frequency": "Monthly",
+      "grace_period_days": 5,
+      "processing_fee_percentage": 1,
+      "service_fee_fixed": 150,
+      "penalty_rule_id": "pen_standard",
+      "collateral_required": false,
+      "guarantor_required": true,
+      "debit_account_id": "acc_1210",
+      "required_documents": [
+        "Student ID",
+        "Enrollment Form"
+      ],
+      "approval_workflow_id": "wf_loan_standard",
+      "active": true,
+      "effective_from": "2026-01-01",
+      "effective_until": null
+    },
+    {
+      "id": "lp_test_1789272604659",
       "code": "LP-EDU-TEST",
       "name": "Education Assistance Loan",
       "description": "Dynamic education financing",
@@ -1659,6 +1732,17 @@
     },
     {
       "id": "sp_test_1789271957567",
+      "code": "SAV-SENIOR",
+      "name": "Golden Years Senior Savings",
+      "min_balance_to_earn_interest": 5000,
+      "annual_interest_rate": 4,
+      "interest_calculation_method": "Quarterly Compounded",
+      "withdrawal_limit_per_day": 30000,
+      "debit_account_id": "acc_2110",
+      "active": true
+    },
+    {
+      "id": "sp_test_1789272604674",
       "code": "SAV-SENIOR",
       "name": "Golden Years Senior Savings",
       "min_balance_to_earn_interest": 5000,
@@ -2065,6 +2149,18 @@
       "current_balance": 25000,
       "currency": "PHP",
       "active": true
+    },
+    {
+      "id": "cash_test_1789272604666",
+      "name": "GCash / Maya Digital Wallet Clearing",
+      "account_number": "DIGI-EWALLET-01",
+      "bank_name": "Digital Payments Clearing",
+      "branch_id": "branch_tar",
+      "gl_account_id": "acc_1110",
+      "opening_balance": 25000,
+      "current_balance": 25000,
+      "currency": "PHP",
+      "active": true
     }
   ],
   "cash_transactions": [],
@@ -2123,6 +2219,19 @@
     },
     {
       "id": "fee_test_1789271957562",
+      "name": "Notarial & Legal Documentation Fee",
+      "code": "FEE-NOTARIAL",
+      "calculation_type": "Fixed",
+      "fixed_amount": 350,
+      "percentage": 0,
+      "min_amount": 350,
+      "max_amount": 350,
+      "applicable_module": "Loans",
+      "accounting_account_id": "acc_4120",
+      "active": true
+    },
+    {
+      "id": "fee_test_1789272604665",
       "name": "Notarial & Legal Documentation Fee",
       "code": "FEE-NOTARIAL",
       "calculation_type": "Fixed",
@@ -2902,6 +3011,15 @@
       "new_value": "12.0%",
       "changed_by": "Test Runner",
       "created_at": "2026-09-13T03:59:17.561Z",
+      "reason": "Test 2 policy update"
+    },
+    {
+      "id": "audit_1789272604663_nmyei2",
+      "setting": "Loan Product Rate Updated",
+      "old_value": "12%",
+      "new_value": "12.0%",
+      "changed_by": "Test Runner",
+      "created_at": "2026-09-13T04:10:04.663Z",
       "reason": "Test 2 policy update"
     }
   ],
