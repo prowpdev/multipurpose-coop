@@ -708,7 +708,8 @@
       "is_control": false,
       "has_subsidiary": false,
       "is_active": true,
-      "active": true
+      "active": true,
+      "description": ""
     }
   ],
   "financial_statement_mappings": [

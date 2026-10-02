@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+// Send universal CORS headers for all incoming web SPA requests
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS, PATCH');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin');
+header('Access-Control-Max-Age: 86400');
+
 // Pre-flight CORS handling for modern web single page applications
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
     http_response_code(204);
     exit;
 }
@@ -40,6 +43,7 @@ try {
     $router->dispatch($method, $uri, $db);
 } catch (\Throwable $e) {
     http_response_code(500);
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode([
         'success' => false,
